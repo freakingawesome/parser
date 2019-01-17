@@ -232,7 +232,17 @@ fragment frag on Friend {
   mutation: MutationType
 }
 
-type Foo implements Bar
+type Foo implements Bar & Baz
+{
+    one: Type
+  two(argument: InputType!): Type
+  three(argument: InputType, other: String): Int
+  four(argument: String = ""string""): String
+  five(argument: [String] = [""string"", ""string""]): String
+  six(argument: InputType = { key: ""value""}): Type
+}
+
+type FooWithCommasForBackwardsCompatibility implements Bar, Baz
 {
     one: Type
   two(argument: InputType!): Type
@@ -251,6 +261,11 @@ interface Bar
 {
     one: Type
     four(argument: String = ""string""): String
+}
+
+interface Baz
+{
+    three(argument: InputType, other: String): Int
 }
 
 interface AnnotatedInterface @onInterface {

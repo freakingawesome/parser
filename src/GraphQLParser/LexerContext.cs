@@ -273,6 +273,9 @@
                     case ',': // Comma
                         ++position;
                         break;
+                    case '&': // Ampersand (separate multiple interfaces)
+                        ++position;
+                        break;
 
                     case '#':
                         position = this.WaitForEndOfComment(body, position, code);
